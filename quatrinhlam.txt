@@ -1,0 +1,3 @@
+-- glocal style scss ok
+
+-- config routes ok
