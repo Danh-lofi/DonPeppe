@@ -1,0 +1,68 @@
+@use '../../scss/' as *;
+.button{
+    display: block;
+    position: relative;
+    min-width: 125px;
+    padding: 16px 0;
+    font-size: 1.1rem;
+    text-align: center;
+    overflow: hidden;
+    border: none;
+    font-weight: 600;
+    background-color: $white;
+    color: $text-color;
+    &:hover  {
+        cursor: pointer;
+    }
+    &:hover::before {
+        transform: translateY(0);
+    }
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 0;
+            background-color: #f7f7f2;
+            top: 0;
+            left: 0;
+            color: currentColor;
+            z-index: 1;
+            transform: translateY(100%);
+            transition: transform 0.2s ease-in;
+        }
+}
+.primary {
+    background: $primary-color;
+    color: $white;
+    background-position: top;
+    transition: background-position 0.5s ease-in-out;
+    &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transform: translateY(100%);
+            transition: transform 0.2s ease-in;
+            transform-origin: bottom center;
+            background-color: #C83B1A;
+            z-index: 1;
+        }
+
+    
+        &:hover::before{
+            transform: translateY(0);
+        }
+}
+
+.large{
+    padding: 15px 31px;
+    font-size: 1.3rem;
+}
+
+.text{
+    position: relative;
+    z-index: 10;
+}

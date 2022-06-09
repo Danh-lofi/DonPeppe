@@ -1,7 +1,102 @@
 import React from "react";
+import styles from "./header.module.scss";
+import classNames from "classnames/bind";
+import { IconCart, IconSearch } from "../../../icon/Icon";
+import Button from "../../../components/button/Button";
+import Popper from "../../../components/popper/Popper";
+const cx = classNames.bind(styles);
 
 const Header = () => {
-  return <div>Header</div>;
+  let isCart = false;
+  return (
+    <div className={cx("header")}>
+      <div className={cx("container")}>
+        <div className={cx("logo")}>
+          <img
+            src="https://donpeppe.qodeinteractive.com/wp-content/uploads/2019/10/logo.png"
+            alt="logo"
+          />
+        </div>
+        <div className={cx("menu")}>
+          <div className={cx("products", "menu-item")}>
+            <span className={cx("products-text")}>Products</span>
+          </div>
+          <div className={cx("cart", "menu-item")}>
+            <span className={cx("cart__logo")}>
+              <IconCart />
+            </span>
+            <span className={cx("cart__number")}>1</span>
+            <span className={cx("cart-text")}>CART</span>
+            <div className={cx("cart__popper")}>
+              <Popper>
+                {isCart ? (
+                  <p>No products in the cart.</p>
+                ) : (
+                  <div className={cx("drop")}>
+                    <div className={cx("drop__header")}>YOUR BASKET:</div>
+                    <div className={cx("drop__container")}>
+                      <div className={cx("drop__container__img")}>
+                        <img
+                          src="https://donpeppe.qodeinteractive.com/wp-content/uploads/2019/10/product-black-img-1a-400x400.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <div className={cx("drop__container__info")}>
+                        <span className={cx("drop__container__info__name")}>
+                          SPINACH FETA PESTO
+                        </span>
+                        <span className={cx("drop__container__info__price")}>
+                          1X $45.00
+                        </span>
+                      </div>
+                      <div className={cx("drop__container__close")}>
+                        &times;
+                      </div>
+                    </div>
+                    <div className={cx("drop__footer")}>
+                      <div className={cx("drop__footer__inner")}>
+                        <span className={cx("drop__footer__title")}>
+                          TOTAL PAYMENT:
+                        </span>
+                        <span className={cx("drop__footer__total-price")}>
+                          $45.00
+                        </span>
+                      </div>
+                      <div className={cx("drop__footer__note")}>
+                        <span>*Minimum order 10$</span>
+                      </div>
+                    </div>
+
+                    <div className={cx("drop__buttons")}>
+                      <div className={cx("drop__buttons__left")}>
+                        <Button primary link="/cart">
+                          SHOPPING CART
+                        </Button>
+                      </div>
+                      <div className={cx("drop__buttons__right")}>
+                        <Button link="/checkout">CHECKOUT</Button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </Popper>
+            </div>
+          </div>
+          <div className={cx("search", "menu-item")}>
+            <span className={cx("search__icon")}>
+              <IconSearch />
+            </span>
+            <span className={cx("search-text")}>SEARCH</span>
+          </div>
+          <div className={cx("order", "menu-item")}>
+            <Button primary large link="/shop">
+              ORDER ONLINE
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Header;

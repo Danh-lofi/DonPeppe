@@ -1,0 +1,169 @@
+@use '../../../scss/' as *;
+.header{
+    height: $header-height;
+    background-color: $white;
+}
+
+.container{
+    height:100%;
+    width: 100%;
+    @include flex(center,space-between);
+    padding: 0 $header-padding;
+
+   
+}
+.logo{
+    & > img {
+            height: 70px;
+            width: auto;
+        }
+}
+.menu{
+    @include flex(center, center);
+    &-item {
+        margin: 0 20px;
+        color: $text-color;
+        letter-spacing: .1rem;
+        font-weight: 500;
+        font-size: 1.4rem;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+.cart{
+    position: relative;
+    @include flex(center,center);
+    &__logo{
+        margin-right: 5px;
+        display: flex;
+    }
+    &__number{
+        height: 15px;
+        width: 15px;
+        font-size: 1rem;
+        @include flex(center,center);
+        color: $white;
+        border-radius: 50%;
+        background-color: $primary-color;
+        position: absolute;
+        top: 0;
+        left: -6px;
+    }
+
+    &__popper{
+        position: absolute;
+        top:70px;
+        right: 0;
+        // max-height: 0;
+        max-height: 100vh;
+        transition: max-height 0.4s ease-in;
+        z-index: 1;
+        overflow: hidden;
+    }
+    &::before{
+        content:'';
+        width: 100%;
+        height: 200%;
+        position: absolute;
+        top: 100%;
+    }
+    &:hover > &__popper
+    {
+        max-height: 100vh;
+    }
+
+}
+
+.search {
+    @include flex(center, center);
+    &__icon{
+    @include flex(center, center);
+        & > svg{
+            height:28px;
+            fill: $black;
+        }
+    }
+}
+
+.order{
+    overflow: hidden;
+    flex:1;
+}
+
+
+.drop{
+    &__header{
+        color: $white;
+        padding: 15px 0px;
+        border-bottom: 3px dotted $secondary-color;
+        font-size: 1.6rem;
+    }
+    &__container{
+        padding: 15px 0px;
+        @include flex(center,unset);
+                border-bottom: 3px dotted $secondary-color;
+
+        &__img{
+            margin-right: 20px;
+            & > img{
+                width: 68px;
+                height:68px;
+            }
+        }
+
+        &__info{
+            color: $white;
+            font-size: 1.5rem;
+            display: flex;
+            flex-direction: column;   
+            &__name{
+                transition: color 0.4s linear;
+            }
+            &__name:hover{
+                cursor: pointer;
+                color: $secondary-color;
+            }
+        }
+        &__close{
+            color: $white;
+            font-weight: 300;
+            font-size: 3.5rem;
+            flex: 1;
+            text-align: right;
+            margin-right: 10px;
+        }
+    }
+
+    &__footer{
+        padding: 15px 0px;
+
+        &__inner{
+            @include flex(center, space-between);
+            color: $white;
+        }
+        &__note{
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #8f8f8f;
+        }
+    }
+
+    &__buttons{
+        display: flex;
+        letter-spacing: .2rem;
+        font-size: 1.2rem;
+        &__left{
+            margin-right: 3px;
+            flex: 1;
+        }
+        &__right{
+            flex: 1;
+            margin-left: 3px;
+        }
+
+    }
+
+}
+
