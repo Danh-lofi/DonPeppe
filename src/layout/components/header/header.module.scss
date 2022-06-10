@@ -56,9 +56,8 @@
         position: absolute;
         top:70px;
         right: 0;
-        // max-height: 0;
-        max-height: 100vh;
-        transition: max-height 0.4s ease-in;
+        max-height: 0;
+        transition: max-height 0.4s ease-in-out;
         z-index: 1;
         overflow: hidden;
     }
@@ -85,6 +84,46 @@
             fill: $black;
         }
     }
+        &__tab {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: $header-height;
+            background-color: $white;
+            z-index: 10;
+            animation: fadeIn .2s linear;
+            
+            &__inner {
+                padding: 0 49px 0 77px;
+                height: 100%;
+                @include flex(center, space-between);
+            }
+    
+            &__input {
+                flex: 1;
+                padding: 0 10px;
+    
+                &>input {
+                    border: none;
+                    font-size: 1.8rem;
+                    color: #858585;
+                }
+            }
+    
+            &__close {
+    
+                font-size: 3rem;
+                // color: $white;
+    
+                &:hover {
+                    cursor: pointer;
+                    animation: spinner 0.3s linear normal;
+                }
+    
+            }
+    
+        }
 }
 
 .order{
@@ -167,3 +206,26 @@
 
 }
 
+.open {
+    animation: fadeIn .2s linear;
+}
+
+
+@keyframes spinner {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes fadeIn {
+from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
