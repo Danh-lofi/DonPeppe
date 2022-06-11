@@ -1,0 +1,111 @@
+@use '../../../scss/' as *;
+.footer{
+    height:100%;
+    width: 100%;
+    z-index: 100;
+    display: flex;  
+}
+
+.left {
+    flex: 1;
+
+    &__container {
+        padding: 141px 61px 26px;
+        display: flex;
+        &__item{
+            flex: 1;
+        }
+    }
+
+    &__contact{
+        letter-spacing: .1rem;
+        &__title{
+            color: #b7903c;
+            font-weight: 400;
+            
+        }
+        &__item{
+            color: #B2B2B2;
+            font-size: 1.5rem;
+            font-weight: 300;
+            & > p:hover{
+                transition: color 0.2s linear;
+                cursor: pointer;
+                color: #b7903c;
+            }
+        }
+    }
+}
+
+.item__work{
+    position: relative;
+    & > .weekdays{
+        font-weight:400;
+        color: #b7903c;
+        &>.noted {
+                position: absolute;
+                font-size: 2.2rem;
+                top: 0;
+                color: #d2401e;
+                margin-left: 5px;
+            }
+    }
+   & > .time{
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #B2B2B2;
+    &.close{
+        color: #d2401e;
+    }
+   }
+}
+.list-socials {
+    @include flex(center,space-between);
+    &__title {
+        font-weight: 400;
+        color: #b7903c;
+    }
+    & > svg{
+        height: 15px;
+        width: 15px;
+        fill: $white;
+        margin-right: 10px;
+        transition: fill 0.2s linear;
+        &:hover{
+            cursor: pointer;
+            fill: #b7903c;
+        }
+    }
+}
+
+.left__solugan{
+    margin-right:20px;
+    color: $white;
+    font-size: 2.2rem;
+    text-align:left;
+    letter-spacing: .1rem;
+    line-height: 3.5rem;
+}
+
+.left__bottom{
+    padding: 0 61px 26px;
+    &__inner{
+        @include flex(center,space-between);
+    } 
+}
+
+.textwidget{
+    font-weight: 300;
+    font-size: 1.3rem;
+    letter-spacing: .1rem;
+    &__link{
+        color: #339966; 
+    }
+}
+.right {
+    flex: 1;
+}
+
+.mr-15{
+    margin-bottom: 15px;
+}
