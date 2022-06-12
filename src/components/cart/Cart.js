@@ -1,10 +1,14 @@
 import React from "react";
 import styles from "./cart.module.scss";
 import classNames from "classnames/bind";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store/cartSlice";
 
 import Button from "../button/Button";
+
 const cx = classNames.bind(styles);
 const Cart = (props) => {
+  const dispatch = useDispatch();
   let typeColor;
   let priceDiscount;
 
@@ -13,10 +17,20 @@ const Cart = (props) => {
 
   let price = props.price % 1 === 0 ? `${props.price}.00` : props.price;
 
-  // console.log(typeof props.discount);
   if (props.discount) {
     priceDiscount = props.price - (props.price * props.discount) / 100;
   }
+
+  const addItemToCart = () => {
+    dispatch(
+      cartActions.addItemToCart({
+        id: props.id,
+        src: props.src,
+        name: props.name,
+        price: props.discount ? priceDiscount : props.price,
+      })
+    );
+  };
 
   return (
     <div className={cx("cart")}>
@@ -33,7 +47,7 @@ const Cart = (props) => {
         </div>
         <div className={cx("buttons")}>
           <div className={cx("btn-left")}>
-            <Button primary small>
+            <Button primary small onClick={addItemToCart}>
               ADD TO CART
             </Button>
           </div>

@@ -33,6 +33,8 @@ const ListCart = () => {
   //     console.log(listCart);
   const Carts = listCart.map((cart) => (
     <Cart
+      key={cart.id}
+      id={cart.id}
       src={cart.img}
       name={cart.name}
       price={cart.price}

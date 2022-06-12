@@ -22,6 +22,7 @@ const Button = (props) => {
         { large: props.large },
         { small: props.small }
       )}
+      onClick={props.onClick}
     >
       <span className={cx("text")}>{props.children}</span>
     </Comp>

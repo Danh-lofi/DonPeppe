@@ -1,5 +1,6 @@
 @use '../../../../scss/' as *;
 .cart__item {
+    position: relative;
     padding: 5px 0px;
     @include flex(center, unset);
     &__img {
@@ -25,6 +26,21 @@
             cursor: pointer;
             color: $secondary-color;
         }
+
+        &__price{
+            @include flex(center,space-between);
+            &__change-icon {            
+                    & svg {
+                        font-size: 1rem;
+                        margin-right: 20px;
+                        transition: color 0.2s linear;
+                        &:hover{
+                            cursor: pointer;
+                            color: $secondary-color;
+                        }
+                    }
+        }
+    }
     }
 
     &__close {
@@ -35,4 +51,7 @@
         text-align: right;
         margin-right: 10px;
     }
+
+    
+    
 }
