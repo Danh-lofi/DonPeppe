@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
-// Large, Medium
+// Large, Medium, Small
 // Primary , Normal
 const Button = (props) => {
   // button or link
@@ -19,7 +19,8 @@ const Button = (props) => {
       className={cx(
         "button",
         { primary: props.primary },
-        { large: props.large }
+        { large: props.large },
+        { small: props.small }
       )}
     >
       <span className={cx("text")}>{props.children}</span>

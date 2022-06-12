@@ -1,0 +1,92 @@
+@use '../../scss/' as *;
+
+.cart{
+    padding:10px;
+    &__inner{
+        position: relative;
+    }
+}
+.img{
+    width: 100%;
+    height: 100%;
+}
+
+.info{
+    margin: 10px 0;
+    text-align: center;
+
+    & > .name{
+        padding: 5px;
+        font-weight: 500;
+        font-size: 1.6rem;
+        color: $secondary-color;
+    }
+    &>.price {
+        color: $primary-color;
+        padding: 5px;
+        font-weight: 500;
+        font-size: 1.8rem;
+
+       
+    }
+}
+
+.buttons{
+    @include flex(center,center);
+    padding-top: 10px;
+    overflow: hidden;
+    & > .btn-left{
+        transition: transform 0.2s ease-out;
+        margin-right: 5px;
+        transform: translateY(100%);
+        opacity: 0.6;
+    }
+    &>.btn-right {
+        transition: transform 0.2s ease-out;
+        transition-delay: 0.1s;
+        margin-left:  5px;
+        transform: translateY(100%);
+        opacity: 0.6;
+    }
+}
+.cart:hover{
+    cursor: pointer;
+}
+.cart:hover .btn-left,
+.cart:hover .btn-right {
+    transform: translateY(-10%);
+    opacity: 1;
+}
+
+.discount,.type {
+    position: absolute;
+    top: 5%;
+    color: $white;
+    width: 60px;
+    height: 60px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50%;
+    @include flex(center, center);
+    &.green {
+        background-color: #2e5322;
+    }
+    &.orange {
+        background-color:#ffa323;
+    }
+}
+.type {
+    right: 5%;
+}
+.discount{
+    left: 5%;
+}
+
+
+.price{
+    &__old{
+        margin-right: 10px;
+        color: #d3cfaf;
+        text-decoration: line-through;
+    }
+ }
