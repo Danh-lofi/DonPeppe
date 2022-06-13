@@ -1,0 +1,206 @@
+@use '../../../scss/' as *;
+.modal{
+
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    &.open{
+        visibility: visible;
+        @include opacity(fadeIn, 0, 1);
+        animation: fadeIn 0.3s ease-in;
+        & .container{
+            transform: translateY(0);
+        }
+    }
+    &.closes {
+        visibility: hidden;
+        @include opacity(fadeOut, 1, 0);
+        animation: fadeOut 0.3s ease-in;
+        transition: visibility 0.3s ease-in;     
+    }
+}
+
+.backdrop{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(248, 248, 244, .8);
+}
+
+.container{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    padding:12px;
+    background-color: rgba(248, 248, 244, .5);
+    @include opacity(fadeIn, 0, 1);
+    animation: fadeIn 0.1s ease-in;
+    transform: translateY(100%);
+    transition: transform 0.2s linear;
+}
+.inner{
+    display:flex;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+}
+
+.close{
+    z-index: 10;
+    position: absolute;
+    right: 1%;
+    top: 2.3%;
+    width: 0;
+    height: 0;
+    border: 50px solid transparent;
+    border-top-color: orange;
+    border-right-color: orange; 
+    &::after {
+            content: "";
+            height: 60px;
+            width: 60px;
+            position: absolute;
+            top: -50px;
+            right: -50px;
+        }
+
+    &:hover{
+        cursor: pointer;
+    }
+
+    &:hover > &__icon{
+        animation: spinner 0.4s ease-out;
+    }
+    &__icon{
+        color: #fff;
+        font-size: 2.8rem;
+        transform: translate(100%, -120%);
+       
+    }
+}
+
+.img{
+    flex: 1;
+    & > img{
+        max-width: 100%;
+        height: 100%;
+    }
+}
+.info{
+    flex: 1;
+    padding: 0 30px;
+
+    & > .name{
+        font-weight: 500;
+        font-size: 2.5rem;
+        padding: 10px 0;
+    }
+
+    & > .rating{
+        padding: 10px 0;
+        color: orange;
+    }
+
+    & > .price{
+        padding: 10px 0;
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: $primary-color;
+    }
+
+    & > .description{
+        padding: 10px 0;
+        font-weight: 300;
+        font-size: 1.7rem;
+        opacity: 0.6;
+    }
+
+    & > .title{
+        padding: 30px 0 10px;
+        color: $secondary-color;
+        font-weight: 500;
+    }
+
+    &  .nutritional{
+        padding: 10px 0;
+
+        &__item{
+            display: flex;
+            &__name{
+                opacity: 0.6;
+                font-weight: 300;
+                font-size: 1.6rem;
+            }
+            &__donut{
+                text-align: center;
+                width: 200px;
+                border-bottom: 2px dotted $secondary-color;
+                margin: 0 4px 8px 4px;
+            }
+
+            &__num{
+                color: $primary-color;
+                font-weight: 600;
+            }
+        }
+        
+    }
+    & .buttons{
+        display: flex;
+        position: relative;
+        & .number{
+            text-align: center;
+            width: 80px;
+            border: 2px solid #000;
+            margin-right:5px;
+        }
+        & .icon{
+            &__input{
+                position: absolute;
+                left: 60px;
+                color: $secondary-color;
+                transition: color 0.2s linear;
+                &:hover{
+                    cursor: pointer;
+                    color: $primary-color;
+                }
+            }
+            &__up{
+                top: 20%;
+            }
+            &__down{
+                top: 50%;
+            }
+
+        }
+    }
+}
+
+@keyframes spinner {
+    from {
+        transform: translate(100%, -120%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(100%, -120%) rotate(180deg);
+    }
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+

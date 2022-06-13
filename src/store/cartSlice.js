@@ -26,6 +26,26 @@ const cartSlice = createSlice({
         existingCart.quantity++;
       }
     },
+    addItemsToCart(state, action) {
+      const newItem = action.payload;
+      const existingCart = state.items.find((item) => item.id === newItem.id);
+      // find trả về tham chiếu tới nó
+      state.totalQuantity += newItem.quantity;
+      state.totalPrice +=
+        newItem.price * newItem.quantity ||
+        existingCart.price * existingCart.quantity;
+      if (!existingCart) {
+        state.items.push({
+          id: newItem.id,
+          src: newItem.src,
+          name: newItem.name,
+          price: newItem.price,
+          quantity: newItem.quantity,
+        });
+      } else {
+        existingCart.quantity += newItem.quantity;
+      }
+    },
     removeItemFromCart(state, action) {
       const id = action.payload;
       const existingCart = state.items.find((item) => item.id === id);

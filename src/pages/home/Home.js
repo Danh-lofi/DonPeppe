@@ -3,8 +3,8 @@ import styles from "./home.module.scss";
 import classNames from "classnames/bind";
 import titleBg from "../../assests/imgs/title-shop.jpg";
 import bg from "../../assests/imgs/menu-background.png";
-import Cart from "../../components/cart/Cart";
 import ListCart from "../../components/listcart/ListCart";
+import ModalDetail from "../../layout/components/modal/ModalDetail";
 const cx = classNames.bind(styles);
 const Home = () => {
   return (
@@ -23,6 +23,8 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      <ModalDetail />
     </div>
   );
 };

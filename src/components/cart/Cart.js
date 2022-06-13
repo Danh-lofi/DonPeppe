@@ -3,6 +3,7 @@ import styles from "./cart.module.scss";
 import classNames from "classnames/bind";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../store/cartSlice";
+import { modalDetailActions } from "../../store/modalDetailSlice";
 
 import Button from "../button/Button";
 
@@ -20,6 +21,17 @@ const Cart = (props) => {
   if (props.discount) {
     priceDiscount = props.price - (props.price * props.discount) / 100;
   }
+
+  const openModalHandler = () => {
+    dispatch(
+      modalDetailActions.openModal({
+        id: props.id,
+        name: props.name,
+        price: props.price,
+        src: props.src,
+      })
+    );
+  };
 
   const addItemToCart = () => {
     dispatch(
@@ -52,7 +64,9 @@ const Cart = (props) => {
             </Button>
           </div>
           <div className={cx("btn-right")}>
-            <Button small>QUICK VIEW</Button>
+            <Button small onClick={openModalHandler}>
+              QUICK VIEW
+            </Button>
           </div>
         </div>
 

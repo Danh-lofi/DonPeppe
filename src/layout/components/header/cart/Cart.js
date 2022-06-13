@@ -18,7 +18,6 @@ const Cart = () => {
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
 
-  console.log(listCart);
   useEffect(() => {
     if (listCart.length > 0) {
       setIsCart(true);
