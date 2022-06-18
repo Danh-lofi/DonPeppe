@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./cart.module.scss";
 import classNames from "classnames/bind";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/cartSlice";
 import { modalDetailActions } from "../../store/modalDetailSlice";
 
@@ -9,7 +9,9 @@ import Button from "../button/Button";
 
 const cx = classNames.bind(styles);
 const Cart = (props) => {
+  const listCart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
+  let isLink = false;
   let typeColor;
   let priceDiscount;
 
@@ -43,6 +45,7 @@ const Cart = (props) => {
       })
     );
   };
+  isLink = listCart.some((item) => item.id === props.id);
 
   return (
     <div className={cx("cart")}>
@@ -59,9 +62,15 @@ const Cart = (props) => {
         </div>
         <div className={cx("buttons")}>
           <div className={cx("btn-left")}>
-            <Button primary small onClick={addItemToCart}>
-              ADD TO CART
-            </Button>
+            {!isLink ? (
+              <Button primary small onClick={addItemToCart}>
+                ADD TO CART
+              </Button>
+            ) : (
+              <Button link="/cart" primary small>
+                VIEW CART
+              </Button>
+            )}
           </div>
           <div className={cx("btn-right")}>
             <Button small onClick={openModalHandler}>

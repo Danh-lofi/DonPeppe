@@ -1,0 +1,11 @@
+@use '../../scss/' as *;
+
+.inner{
+    height: 300px;
+    background-color:#000;
+    @include flex(center,unset);
+    color: $white;
+    font-size: 5rem;
+    font-weight: 600;
+    padding-left:10%;
+}

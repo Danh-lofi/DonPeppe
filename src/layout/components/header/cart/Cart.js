@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import Button from "../../../../components/button/Button";
 import CartItem from "../cart-item/CartItem";
 
+import { Link } from "react-router-dom";
 const cx = classNames.bind(styles);
 
 const Cart = () => {
@@ -37,11 +38,13 @@ const Cart = () => {
   ));
   return (
     <div className={cx("cart", "menu-item")}>
-      <span className={cx("cart__logo")}>
-        <IconCart />
-      </span>
-      <span className={cx("cart__number")}>{totalQuantity}</span>
-      <span className={cx("cart-text")}>CART</span>
+      <Link to="/cart" className={cx("cart", "menu-item")}>
+        <span className={cx("cart__logo")}>
+          <IconCart />
+        </span>
+        <span className={cx("cart__number")}>{totalQuantity}</span>
+        <span className={cx("cart-text")}>CART</span>
+      </Link>
       <div className={cx("cart__popper")}>
         <Popper>
           {!isCart ? (
@@ -56,7 +59,7 @@ const Cart = () => {
                     TOTAL PAYMENT:
                   </span>
                   <span className={cx("drop__footer__total-price")}>
-                    ${totalPrice}
+                    ${totalPrice.toFixed(2)}
                   </span>
                 </div>
                 <div className={cx("drop__footer__note")}>

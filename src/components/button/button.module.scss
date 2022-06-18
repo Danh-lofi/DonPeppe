@@ -1,6 +1,7 @@
 @use '../../scss/' as *;
 .button{
     display: block;
+    line-height: 8px;
     position: relative;
     min-width: 125px;
     padding: 16px 0;
@@ -63,8 +64,13 @@
 }
 
 .text{
-    position: relative;
     z-index: 10;
+    position: relative;
+ 
+}
+.text-spacing{
+    letter-spacing: .1rem;
+    font-weight: 500;
 }
 .small{
     min-width: 110px;

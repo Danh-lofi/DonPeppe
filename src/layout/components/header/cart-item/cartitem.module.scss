@@ -13,6 +13,7 @@
     }
 
     &__info {
+        flex-grow: 1;
         color: $white;
         font-size: 1.5rem;
         display: flex;
@@ -28,8 +29,10 @@
         }
 
         &__price{
-            @include flex(center,space-between);
-            &__change-icon {            
+            @include flex(center,unset);
+
+            &__change-icon {    
+                padding-left: 20px;        
                     & svg {
                         font-size: 1rem;
                         margin-right: 20px;

@@ -42,7 +42,7 @@
         max-height: 0;
         transition: max-height 0.4s ease-in-out;
         z-index: 1;
-        overflow: hidden;
+        overflow: auto;
     }
 
     &::before {
@@ -60,6 +60,8 @@
 }
 
 .drop {
+    height: 100%;
+    overflow: auto;
     &__header {
         color: $white;
         padding: 15px 0px;

@@ -24,7 +24,9 @@ const Button = (props) => {
       )}
       onClick={props.onClick}
     >
-      <span className={cx("text")}>{props.children}</span>
+      <span className={cx("text", { "text-spacing": props.spacing })}>
+        {props.children}
+      </span>
     </Comp>
   );
 };

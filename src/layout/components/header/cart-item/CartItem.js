@@ -29,9 +29,9 @@ const CartItem = (props) => {
         <img src={props.src} alt="" />
       </div>
       <div className={cx("cart__item__info")}>
-        <span className={cx("cart__item__info__name")}>${props.name}</span>
+        <span className={cx("cart__item__info__name")}>{props.name}</span>
         <span className={cx("cart__item__info__price")}>
-          {props.quantity}X ${props.price}
+          {props.quantity}X ${props.price.toFixed(2)}
           <div className={cx("cart__item__info__price__change-icon")}>
             <FontAwesomeIcon icon={faMinus} onClick={removeItemFromCart} />
             <FontAwesomeIcon icon={faPlus} onClick={addItemToCart} />

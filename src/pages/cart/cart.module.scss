@@ -1,0 +1,39 @@
+@use '../../scss/' as *;
+.cart{
+    &__container{
+        background-color: $white;
+        height: 100%;
+        width: 100%;
+        padding-top: 70px;
+        padding-bottom: 40px;
+        @include flex(center, center);
+    }
+    &__inner{
+        width: 1300px;
+        padding: 0 30px;
+    }
+
+    &__none{
+        @include flex(center,center);
+        flex-direction: column;
+    }
+
+    &__title{
+        width: 100%;
+        text-align:center;
+        padding: 20px 30px;
+        margin-bottom: 30px;
+        border: 1px solid $black;
+        & h4{
+            color: #333;
+            font-weight: 300;
+            font-size: 2rem;
+            padding: 10px 0;
+        }
+        &__btn{
+            & a{
+                letter-spacing: .4rem;
+            }
+        }
+    }
+}

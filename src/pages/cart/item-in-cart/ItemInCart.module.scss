@@ -1,0 +1,138 @@
+@use '../../../scss/' as *;
+.ItemInCart{
+    &__title{
+        padding-bottom: 5px;
+        border-bottom: 2px dotted $secondary-color;
+        margin: 20px 0;
+    }
+    &__text{
+        font-weight: 500;
+        color:$secondary-color;
+        text-align: center;
+    }
+    &__list-item{
+        padding: 20px 0;
+        border-bottom: 2px dotted $secondary-color;
+    }
+    &__item{
+        position: relative;
+        &__delete{
+            font-weight: 300;
+            font-size: 4rem;
+            color: #999;
+            // padding-left: 20px;
+            transition: color 0.2s linear;
+            &:hover{
+                cursor: pointer;
+                color: $primary-color;
+            }
+        }
+        &__product{
+            @include flex(center,unset);
+            & img{
+                height: 86px;
+                width: 86px;
+            }
+            &__name{
+                padding-left: 20px;
+                font-weight: 500;
+                letter-spacing: .1rem;
+            }
+            &__price{
+                color: #999;
+            }
+        }
+    }
+
+    &__total{
+        padding: 20px 0;
+    }
+
+    &__subtotal{
+        padding: 20px 0;
+        border-bottom: 1px solid $black;
+        display: flex;
+        &__title{
+            flex: 3;
+        }
+        &__price{
+            color: #999;
+            flex: 9;
+        }
+    }
+
+        &__total {
+            &__container{
+                padding: 20px 0;
+                border-bottom: 2px solid $black;
+                display: flex;
+            }
+    
+            &__title {
+                flex: 3;
+            }
+    
+            &__price {
+                color: #999;
+                flex: 9;
+            }
+        }
+
+
+}
+
+.table{
+    @include flex(center, unset);
+}
+
+.row-delete{
+    flex: 1;
+}
+.row-product{
+    flex: 5;
+}
+.row-rest{
+    flex: 2;
+    text-align: left;
+}
+
+
+.pl-20{
+    padding-left: 20px;
+}
+.number {
+    text-align: center;
+    padding: 10px;
+    width: 80px;
+    border: 2px solid #000;
+    margin-right: 5px;
+}
+.icon{
+            &__input{
+                position: absolute;
+                left: 60px;
+                color: $secondary-color;
+                transition: color 0.2s linear;
+                &:hover{
+                    cursor: pointer;
+                    color: $primary-color;
+                }
+            }
+            &__up{
+                top: 20%;
+            }
+            &__down{
+                top: 50%;
+            }
+
+        }
+
+.heading{
+    font-size: 4rem;
+    padding: 30px 0;
+    font-family: 400;
+}
+
+.button{
+    display: flex;
+}
