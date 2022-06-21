@@ -1,0 +1,93 @@
+@use '../../../scss/' as *;
+
+.product {
+    display: flex;
+    padding-bottom: 50px;
+
+    & .img {
+        flex: 1;
+    }
+
+    & .info {
+        padding-left: 30px;
+        flex: 1;
+
+        &__inner {
+            max-width: 400px;
+        }
+
+    }
+}
+
+.name {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: #333;
+    margin: 10px 0;
+}
+
+.price {
+    margin: 30px 0;
+    color: $primary-color;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.description {
+    margin: 12px 0;
+    opacity: 0.6;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+}
+
+.nutritional {
+    margin-bottom: 10px;
+
+    &__title {
+        margin: 20px 0;
+        color: $secondary-color;
+    }
+
+    &__item {
+        display: flex;
+
+        &__name {
+            opacity: 0.6;
+            font-weight: 300;
+            font-size: 1.6rem;
+        }
+
+        &__donut {
+            text-align: center;
+            width: 200px;
+            border-bottom: 2px dotted $secondary-color;
+            margin: 0 4px 8px 4px;
+        }
+
+        &__num {
+            color: $primary-color;
+            font-weight: 600;
+        }
+    }
+}
+
+.meta {
+    font-size: 1.4rem;
+    font-weight: 500;
+
+    &__tag {
+        color: $secondary-color;
+    }
+
+    &__info {
+        opacity: 0.6;
+        font-weight: 400;
+        margin-left: 3px;
+    }
+}
+
+.actions {
+    margin-top: 20px;
+    position: relative;
+    display: flex;
+}

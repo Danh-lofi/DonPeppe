@@ -1,0 +1,29 @@
+@use '../../scss/' as *;
+.number {
+    text-align: center;
+    width: 80px;
+    border: 2px solid #000;
+    margin-right: 5px;
+}
+.icon {
+    &__input {
+        position: absolute;
+        left: 60px;
+        color: $secondary-color;
+        transition: color 0.2s linear;
+
+        &:hover {
+            cursor: pointer;
+            color: $primary-color;
+        }
+    }
+
+    &__up {
+        top: 20%;
+    }
+
+    &__down {
+        top: 50%;
+    }
+
+}

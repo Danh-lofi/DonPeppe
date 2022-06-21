@@ -29,8 +29,6 @@ const ListCart = () => {
     };
     getListCart();
   }, []);
-  //   listCart.map((cart) => console.log(cart));
-  //     console.log(listCart);
   const Carts = listCart.map((cart) => (
     <Cart
       key={cart.id}

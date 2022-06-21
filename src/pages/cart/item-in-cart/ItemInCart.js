@@ -11,7 +11,6 @@ const ItemInCart = () => {
   const listCart = useSelector((state) => state.cart.items);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
 
-  console.log(totalPrice);
   const ListCart = listCart.map((item) => (
     <ListItemCart
       key={item.id}
@@ -44,8 +43,8 @@ const ItemInCart = () => {
           </div>
         </div>
         <div className={cx("button")}>
-          <Button link="/checkout" large primary spacing>
-            Proceed to checkout
+          <Button large primary spacing>
+            ORDER
           </Button>
         </div>
       </div>

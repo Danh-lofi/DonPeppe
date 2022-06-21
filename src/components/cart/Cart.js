@@ -4,6 +4,7 @@ import classNames from "classnames/bind";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/cartSlice";
 import { modalDetailActions } from "../../store/modalDetailSlice";
+import { Link } from "react-router-dom";
 
 import Button from "../button/Button";
 
@@ -50,9 +51,13 @@ const Cart = (props) => {
   return (
     <div className={cx("cart")}>
       <div className={cx("cart__inner")}>
-        <img className={cx("img")} src={props.src} alt="img" />
+        <Link to={`/product/${props.id}`}>
+          <img className={cx("img")} src={props.src} alt="img" />
+        </Link>
         <div className={cx("info")}>
-          <h4 className={cx("name")}>{props.name}</h4>
+          <Link to={`/product/${props.id}`}>
+            <h4 className={cx("name")}>{props.name}</h4>
+          </Link>
           <h4 className={cx("price")}>
             <span className={cx({ price__old: props.discount })}>${price}</span>
             {props.discount && (

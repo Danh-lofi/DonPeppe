@@ -2,18 +2,14 @@ import React, { useEffect, useState } from "react";
 import styles from "./modaldetai.module.scss";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faXmark,
-  faStar,
-  faAngleUp,
-  faAngleDown,
-} from "@fortawesome/free-solid-svg-icons";
+import { faXmark, faStar } from "@fortawesome/free-solid-svg-icons";
 
 import { useSelector, useDispatch } from "react-redux";
 import { modalDetailActions } from "../../../store/modalDetailSlice";
 import { cartActions } from "../../../store/cartSlice";
 
 import Button from "../../../components/button/Button";
+import InputInital from "../../../components/input/InputInital";
 const cx = classNames.bind(styles);
 const ModalDetail = () => {
   const [number, setNumber] = useState(1);
@@ -107,21 +103,10 @@ const ModalDetail = () => {
               </div>
             </div>
             <div className={cx("buttons")}>
-              <input
-                className={cx("number")}
-                type="number"
-                value={number}
-                min={0}
-              />
-              <FontAwesomeIcon
-                icon={faAngleUp}
-                className={cx("icon__up", "icon__input")}
-                onClick={increaseNumberHandler}
-              />
-              <FontAwesomeIcon
-                icon={faAngleDown}
-                className={cx("icon__down", "icon__input")}
-                onClick={decreaseNumberHandler}
+              <InputInital
+                number={number}
+                increaseNumberHandler={increaseNumberHandler}
+                decreaseNumberHandler={decreaseNumberHandler}
               />
               <div className={cx("button")}>
                 <Button large primary onClick={addItemsToCartHandler}>
