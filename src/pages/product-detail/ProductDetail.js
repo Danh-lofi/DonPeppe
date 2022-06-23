@@ -17,8 +17,65 @@ const ProductDetail = () => {
     add: false,
     review: false,
   });
+  const [activeStar, setActiveStar] = useState({
+    one: false,
+    two: false,
+    three: false,
+    four: false,
+    five: false,
+  });
   let isLink = false;
 
+  const ratingStarHandler = (id) => {
+    switch (id) {
+      case 0:
+        setActiveStar({
+          one: true,
+          two: false,
+          three: false,
+          four: false,
+          five: false,
+        });
+        break;
+      case 1:
+        setActiveStar({
+          one: true,
+          two: true,
+          three: false,
+          four: false,
+          five: false,
+        });
+        break;
+      case 2:
+        setActiveStar({
+          one: true,
+          two: true,
+          three: true,
+          four: false,
+          five: false,
+        });
+        break;
+      case 3:
+        setActiveStar({
+          one: true,
+          two: true,
+          three: true,
+          four: true,
+          five: false,
+        });
+        break;
+      case 4:
+        setActiveStar({
+          one: true,
+          two: true,
+          three: true,
+          four: true,
+          five: true,
+        });
+        break;
+      default:
+    }
+  };
   const changeActiveHandler = (id) => {
     switch (id) {
       case "des":
@@ -118,26 +175,71 @@ const ProductDetail = () => {
                     Your rating
                   </p>
                   <div className={cx("review__icons")}>
-                    <FontAwesomeIcon
-                      icon={star}
-                      className={cx("review__icon")}
-                    />
-                    <FontAwesomeIcon
-                      icon={star}
-                      className={cx("review__icon")}
-                    />
-                    <FontAwesomeIcon
-                      icon={star}
-                      className={cx("review__icon")}
-                    />
-                    <FontAwesomeIcon
-                      icon={star}
-                      className={cx("review__icon")}
-                    />
-                    <FontAwesomeIcon
-                      icon={star}
-                      className={cx("review__icon")}
-                    />
+                    {!activeStar.one ? (
+                      <FontAwesomeIcon
+                        onClick={() => ratingStarHandler(0)}
+                        icon={star}
+                        className={cx("review__icon")}
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        onClick={() => ratingStarHandler(0)}
+                        icon={faStar}
+                        className={cx("review__icon__fa")}
+                      />
+                    )}
+                    {!activeStar.two ? (
+                      <FontAwesomeIcon
+                        onClick={() => ratingStarHandler(1)}
+                        icon={star}
+                        className={cx("review__icon")}
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        onClick={() => ratingStarHandler(1)}
+                        icon={faStar}
+                        className={cx("review__icon__fa")}
+                      />
+                    )}
+                    {!activeStar.three ? (
+                      <FontAwesomeIcon
+                        onClick={() => ratingStarHandler(2)}
+                        icon={star}
+                        className={cx("review__icon")}
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        onClick={() => ratingStarHandler(2)}
+                        icon={faStar}
+                        className={cx("review__icon__fa")}
+                      />
+                    )}
+                    {!activeStar.four ? (
+                      <FontAwesomeIcon
+                        onClick={() => ratingStarHandler(3)}
+                        icon={star}
+                        className={cx("review__icon")}
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        onClick={() => ratingStarHandler(3)}
+                        icon={faStar}
+                        className={cx("review__icon__fa")}
+                      />
+                    )}
+                    {!activeStar.five ? (
+                      <FontAwesomeIcon
+                        onClick={() => ratingStarHandler(4)}
+                        icon={star}
+                        className={cx("review__icon")}
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        onClick={() => ratingStarHandler(4)}
+                        icon={faStar}
+                        className={cx("review__icon__fa")}
+                      />
+                    )}
                   </div>
                   <form>
                     <div className={cx("form__inner")}>

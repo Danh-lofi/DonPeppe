@@ -89,6 +89,16 @@ table.content{
     }
     &__icon{
         color: #ffa323;
+        &:hover{
+            cursor: pointer;
+        }
+
+        &__fa{
+            color:#ffa323;
+            &:hover {
+                    cursor: pointer;
+                }
+        }
     }
     &__icons{
         margin-bottom: 10px;

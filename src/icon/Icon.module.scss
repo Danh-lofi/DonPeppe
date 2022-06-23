@@ -1,0 +1,51 @@
+@use '../scss/' as *;
+.loading{
+    
+    &__svg{
+        &.un{
+            visibility: hidden;
+        }
+        overflow:inherit;
+        transition: opacity 0.4s;
+        transition-delay: 1.2s;
+        &.active{
+            opacity: 0;
+        }
+        &.active .loading__first{
+            opacity: 0;
+            transform: translate(6px, -10px);
+        }
+        &.active .loading__second{
+            opacity: 0;
+            transform: translate(12px, -6px);
+        }
+        &.active .loading__three{
+            opacity: 0;
+            transform: translate(12px, 0px);
+        }
+
+    }
+    
+    &__first{
+        transform: translate(0, 0);
+        opacity: 1;
+        transition: transform 0.4s, opacity 0.4s;
+        
+    }
+    &__second{
+        transform: translate(0, 0);
+        opacity: 1;
+        transition: transform 0.4s, opacity 0.4s;
+        transition-delay: 0.4s;    
+    }
+
+    &__three{
+        transform: translate(0, 0);
+        opacity: 1;
+        transition: transform 0.4s, opacity 0.4s;
+        transition-delay: 0.8s;    
+    }
+
+}
+
+ 

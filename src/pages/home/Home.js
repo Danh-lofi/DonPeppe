@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./home.module.scss";
 import classNames from "classnames/bind";
 import titleBg from "../../assests/imgs/title-shop.jpg";
 import bg from "../../assests/imgs/menu-background.png";
 import ListCart from "../../components/listcart/ListCart";
 import ModalDetail from "../../layout/components/modal/ModalDetail";
+import { IconLoading } from "../../icon/Icon";
 const cx = classNames.bind(styles);
 const Home = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const changeLoadingHandler = () => {
+    setIsLoading((props) => !props);
+  };
   return (
     <div className={cx("home")} style={{ backgroundImage: `url(${bg})` }}>
       <div className={cx("home__inner")}>
@@ -18,8 +23,11 @@ const Home = () => {
           </div>
         </div>
         <div className={cx("home__menu")}>
+          <div className={cx("home__menu__loading")}>
+            <IconLoading active={isLoading} />
+          </div>
           <div className={cx("home__menu__inner")}>
-            <ListCart />
+            <ListCart changeLoadingHandler={changeLoadingHandler} />
           </div>
         </div>
       </div>

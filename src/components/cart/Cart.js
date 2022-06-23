@@ -50,9 +50,13 @@ const Cart = (props) => {
 
   return (
     <div className={cx("cart")}>
-      <div className={cx("cart__inner")}>
+      <div className={cx("cart__inner", { filter: props.filter })}>
         <Link to={`/product/${props.id}`}>
-          <img className={cx("img")} src={props.src} alt="img" />
+          <img
+            className={cx("img", { filter: props.filter })}
+            src={props.src}
+            alt="img"
+          />
         </Link>
         <div className={cx("info")}>
           <Link to={`/product/${props.id}`}>
@@ -85,10 +89,14 @@ const Cart = (props) => {
         </div>
 
         {props.type && (
-          <div className={cx("type", `${typeColor}`)}>{props.type}</div>
+          <div className={cx("type", `${typeColor}`, { filter: props.filter })}>
+            {props.type}
+          </div>
         )}
         {props.discount && (
-          <div className={cx("discount", `${typeColor}`)}>
+          <div
+            className={cx("discount", `${typeColor}`, { filter: props.filter })}
+          >
             -{props.discount}%
           </div>
         )}

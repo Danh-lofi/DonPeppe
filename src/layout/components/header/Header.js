@@ -27,7 +27,7 @@ const Header = () => {
         </Link>
         <div className={cx("menu")}>
           <div className={cx("products", "menu-item")}>
-            <Link to="/products" className={cx("products-text")}>
+            <Link to="/product" className={cx("products-text")}>
               Menu Filter
             </Link>
           </div>
