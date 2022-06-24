@@ -21,7 +21,6 @@ const Product = () => {
       setCategory(id);
     }
   };
-  console.log(isLoading);
   return (
     <div className={cx("product")} style={{ backgroundImage: `url(${bg})` }}>
       <div className={cx("product__inner")}>

@@ -5,8 +5,8 @@ import bg from "../../assests/imgs/menu-background.png";
 const cx = classNames.bind(styles);
 const TitlePage = (props) => {
   return (
-    <div style={{ backgroundImage: `url(${bg})` }} className={cx("inner")}>
-      {props.children}
+    <div style={{ backgroundImage: `url(${bg})` }} className={cx("container")}>
+      <div className={cx("inner")}>{props.children}</div>
     </div>
   );
 };

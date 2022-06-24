@@ -1,11 +1,17 @@
 @use '../../scss/' as *;
-
-.inner{
+.container {
     height: 300px;
-    background-color:#000;
+    width: 100%;
+    background-color: #000;
+}
+.inner{
+    height:100%;
+    max-width: 1300px;
     @include flex(center,unset);
     color: $white;
     font-size: 5rem;
     font-weight: 600;
-    padding-left:10%;
+    // padding-left:10%;
+    margin: 0 auto;
 }
+
