@@ -1,0 +1,23 @@
+@use '../../scss/' as *;
+.shop{
+    width: 100%;
+    height: 100%;
+
+    &__container {
+        padding: 139px 0 100px ;
+        max-width: 1300px;
+        margin: 0 auto;
+    }
+
+    &__inner {
+        display: flex;
+    }
+    
+    &__left{
+        flex: 3;
+    }
+    &__right{
+        flex: 9;
+        background-color: $black;
+    }
+}

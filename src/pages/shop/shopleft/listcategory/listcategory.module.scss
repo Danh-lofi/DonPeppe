@@ -1,0 +1,30 @@
+@use '../../../../scss/' as *;
+
+
+.category{
+    &__list{
+        overflow: hidden;
+    }
+    &__item{
+        font-weight: 400;
+        font-size: 1.6rem;
+        margin: 10px 0;
+        transform: translateX(-35px);
+        opacity: 0.6;
+        color: $black;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        &__img{     
+            padding-right: 10px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        &:hover {
+            cursor: pointer;
+            opacity: 1;
+            transform: translateX(0);
+        }
+        &:hover &__img{     
+            opacity: 1;
+        }
+    }
+}
