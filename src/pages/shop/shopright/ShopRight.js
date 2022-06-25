@@ -13,6 +13,7 @@ const API =
 
 const ShopRight = (props) => {
   const [listCart, setListCart] = useState([]);
+  const [isCart, setIsCart] = useState(true);
   const [page, setPage] = useState({
     totalCart: 0,
     currentPage: 1,
@@ -34,22 +35,57 @@ const ShopRight = (props) => {
             type: data[key].type,
             category: data[key].catogery,
           };
-          carts.push(cart);
+          if (
+            cart.price / 1 >= arange.priceFrom / 1 &&
+            cart.price / 1 <= arange.priceTo / 1
+          )
+            carts.push(cart);
+          if (carts.length === 0) setIsCart(false);
         }
       }
-      setListCart(carts);
+
+      //
+      switch (arange.sorting) {
+        case "low":
+          for (let i = 0; i < carts.length; i++) {
+            for (let j = i + 1; j < carts.length; j++) {
+              if (carts[i].price / 1 > carts[j].price / 1) {
+                const tam = carts[i];
+                carts[i] = carts[j];
+                carts[j] = tam;
+              }
+            }
+          }
+          setListCart(carts);
+          break;
+        case "high":
+          for (let i = 0; i < carts.length; i++) {
+            for (let j = i + 1; j < carts.length; j++) {
+              if (carts[i].price / 1 < carts[j].price / 1) {
+                const tam = carts[i];
+                carts[i] = carts[j];
+                carts[j] = tam;
+              }
+            }
+          }
+          setListCart(carts);
+          break;
+        default:
+          setListCart(carts);
+          break;
+      }
+
       setPage({
         totalCart: carts.length,
-        totalPage: (carts.length / 12).toFixed(),
+        totalPage: Math.ceil(carts.length / 12),
         cartOnPage: 12,
         currentPage: 1,
       });
     };
     getListCart();
-  }, [props.arange]);
+  }, [arange]);
 
   const Carts = listCart.map((cart, id) => {
-    console.log(cart);
     let start = (page.currentPage - 1) * page.cartOnPage + 1;
     let end =
       page.totalPage == page.currentPage
@@ -66,6 +102,7 @@ const ShopRight = (props) => {
           price={cart.price}
           type={cart.type}
           discount={cart.discount}
+          shop={"shop"}
         />
       );
     }
@@ -89,21 +126,32 @@ const ShopRight = (props) => {
   };
   return (
     <div className={cx("container")}>
-      <div>
-        <ShopHeading page={page} />
-      </div>
-      <div className={cx("list__cart")}>
-        <div className={cx("list__cart__container")}>{Carts}</div>
-      </div>
-      <div>
-        <ShopFoot
-          page={page}
-          changePage={(id) => changePage(id)}
-          prePage={prePage}
-          nextPage={nextPage}
-        />
-      </div>
-      <ModalDetail />
+      {!isCart ? (
+        <div className={cx("none-product")}>
+          No products were found matching your selection.
+        </div>
+      ) : (
+        <div>
+          <div>
+            <ShopHeading
+              page={page}
+              onChange={(sorting) => props.changeSorting(sorting)}
+            />
+          </div>
+          <div className={cx("list__cart")}>
+            <div className={cx("list__cart__container")}>{Carts}</div>
+          </div>
+          <div>
+            <ShopFoot
+              page={page}
+              changePage={(id) => changePage(id)}
+              prePage={prePage}
+              nextPage={nextPage}
+            />
+          </div>
+          <ModalDetail />
+        </div>
+      )}
     </div>
   );
 };

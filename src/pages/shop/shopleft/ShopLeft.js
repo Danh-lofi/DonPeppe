@@ -15,7 +15,7 @@ const ShopLeft = (props) => {
       </div>
       <div className={cx("filter")}>
         <h3 className={cx("title")}>FILTER BY PRICE</h3>
-        <Filter />
+        <Filter changeFitlerPrice={props.changeFitlerPrice} />
       </div>
       <div className={cx("search")}>
         <h3 className={cx("title")}>SEARCH</h3>

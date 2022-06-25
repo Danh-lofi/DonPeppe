@@ -2,6 +2,16 @@
 .header{
     height: $header-height;
     background-color: $white;
+
+    &.shink{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: $header-height;
+        width: 100%;
+        z-index: 99;
+        transition: height .3 ease;
+    }
 }
 
 .container{

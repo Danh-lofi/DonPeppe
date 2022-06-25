@@ -6,10 +6,25 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import ItemPage from "./ItemPage";
 
 const cx = className.bind(styles);
 const ShopFoot = (props) => {
   const page = props.page;
+  const totalPage = page.totalPage;
+  const listPage = [];
+  for (let i = 1; i <= totalPage; i++) {
+    listPage.push(i);
+  }
+  const ListPage = listPage.map((item) => (
+    <ItemPage
+    key={item}
+      id={item}
+      page={page}
+      numPage={item}
+      onClick={() => props.changePage(item)}
+    />
+  ));
 
   return (
     <div className={cx("footer")}>
@@ -22,26 +37,9 @@ const ShopFoot = (props) => {
               onClick={props.prePage}
             />
           )}
-          <div
-            className={cx("footer__item", { active: page.currentPage == 1 })}
-            onClick={() => props.changePage(1)}
-          >
-            1
-          </div>
-          <div
-            className={cx("footer__item", { active: page.currentPage == 2 })}
-            onClick={() => props.changePage(2)}
-          >
-            2
-          </div>
-          <div
-            className={cx("footer__item", { active: page.currentPage == 3 })}
-            onClick={() => props.changePage(3)}
-          >
-            3
-          </div>
+          {ListPage}
 
-          {page.currentPage != page.totalPage && (
+          {page.currentPage != totalPage && (
             <FontAwesomeIcon
               icon={faChevronRight}
               className={cx("footer__item")}

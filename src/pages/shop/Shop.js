@@ -11,6 +11,8 @@ const Shop = () => {
   const [arange, setArange] = useState({
     sorting: "default",
     category: "",
+    priceFrom: 0,
+    priceTo: 100,
   });
   const changeSortingHandler = (sorting) => {
     setArange((arange) => ({ ...arange, sorting }));
@@ -19,7 +21,11 @@ const Shop = () => {
   const changeCategoryHandler = (category) => {
     setArange((arange) => ({ ...arange, category }));
   };
+  const changeFitlerPriceHandler = (priceFrom, priceTo) => {
+    setArange((arange) => ({ ...arange, priceFrom, priceTo }));
+  };
 
+  console.log(arange);
   return (
     <div className={cx("shop")}>
       <TitlePage>SHOP</TitlePage>
@@ -28,6 +34,9 @@ const Shop = () => {
           <div className={cx("shop__left")}>
             <ShopLeft
               changeCategory={(category) => changeCategoryHandler(category)}
+              changeFitlerPrice={(priceFrom, priceTo) =>
+                changeFitlerPriceHandler(priceFrom, priceTo)
+              }
             />
           </div>
           <div className={cx("shop__right")}>

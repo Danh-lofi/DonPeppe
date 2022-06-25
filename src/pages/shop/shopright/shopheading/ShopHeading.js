@@ -6,7 +6,7 @@ const cx = className.bind(styles);
 const ShopHeading = (props) => {
   const page = props.page;
   const changeOptionHandler = (e) => {
-    console.log(e.target.value);
+    props.onChange(e.target.value);
   };
   return (
     <div className={cx("heading")}>

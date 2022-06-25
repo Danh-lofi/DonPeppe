@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./header.module.scss";
 import classNames from "classnames/bind";
+import "./header.scss";
 import { IconSearch } from "../../../icon/Icon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
@@ -13,11 +14,32 @@ const cx = classNames.bind(styles);
 
 const Header = () => {
   const [isSearch, setIsSearch] = useState(false);
+  const headerRef = useRef();
   const closeTabSearch = () => {
     setIsSearch(false);
   };
+
+  // useEffect(() => {
+  //   const shrinkHeader = () => {
+  //     if (
+  //       document.body.scrollTop > 100 ||
+  //       document.documentElement.scrollTop > 100
+  //     ) {
+  //       headerRef.current.classList.add("shrink");
+  //       // headerRef.current.classList.add("shrink");
+  //     } else {
+  //       headerRef.current.classList.remove("shrink");
+  //     }
+  //   };
+
+  //   window.addEventListener("scroll", shrinkHeader);
+  //   return () => {
+  //     window.removeEventListener("scroll", shrinkHeader);
+  //   };
+  // }, []);
+
   return (
-    <div className={cx("header", { open: !isSearch })}>
+    <div ref={headerRef} className={cx("header", { open: !isSearch })}>
       <div className={cx("container")}>
         <Link to="/" className={cx("logo")}>
           <img

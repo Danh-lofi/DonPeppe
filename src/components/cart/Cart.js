@@ -50,7 +50,13 @@ const Cart = (props) => {
 
   return (
     <div className={cx("cart")}>
-      <div className={cx("cart__inner", { filter: props.filter })}>
+      <div
+        className={cx(
+          "cart__inner",
+          { filter: props.filter },
+          { shop: props.shop }
+        )}
+      >
         <Link to={`/product/${props.id}`}>
           <img
             className={cx("img", { filter: props.filter })}

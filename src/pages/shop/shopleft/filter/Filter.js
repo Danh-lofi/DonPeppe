@@ -24,6 +24,10 @@ const Filter = (props) => {
     } else setValueTwo(e.target.value);
     setPercent2((e.target.value / 100) * 100);
   };
+
+  const filterPriceHandler = () => {
+    props.changeFitlerPrice(valueOne, valueTwo);
+  };
   return (
     <div className={cx("filter__container")}>
       {/* Slide */}
@@ -40,11 +44,11 @@ const Filter = (props) => {
           step="10"
           max="100"
           value={valueOne}
-          className={cx("slider-1")}
+          className={cx("slider", "slider__1")}
           onInput={(e) => slideOne(e)}
         />
         <input
-          className={cx("slider-1")}
+          className={cx("slider")}
           type="range"
           min="0"
           step="10"
@@ -69,7 +73,12 @@ const Filter = (props) => {
           </span>
         </div>
         <div className={cx("price-amount__submit")}>
-          <span className={cx("price-amount__text")}>FILTER</span>
+          <span
+            className={cx("price-amount__text")}
+            onClick={filterPriceHandler}
+          >
+            FILTER
+          </span>
         </div>
       </div>
     </div>

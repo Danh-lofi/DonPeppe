@@ -11,7 +11,14 @@
     }
     &__inner{
         position: relative;
-        
+        &.shop{
+            display: flex;
+            flex-direction: column;
+
+            & > a{
+                height:285px;
+            }
+        }
         &.filter::after{
             content: "";
             position: absolute;

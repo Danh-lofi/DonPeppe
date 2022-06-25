@@ -14,7 +14,7 @@
         border-radius: 5px;
     }
 }
-.slider-1{
+.slider{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -26,8 +26,11 @@
     bottom: 0;
     background-color: transparent;
     pointer-events: none;
-    // cursor: pointer;
     z-index: 10;
+
+    &__1{
+        padding-right: 5px;
+    }
 }
 
 
