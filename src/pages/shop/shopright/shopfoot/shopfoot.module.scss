@@ -1,0 +1,22 @@
+@use '../../../../scss/' as *;
+.footer {
+    margin: 30px 0;
+
+    &__inner {
+        @include flex(center, center);
+    }
+
+    &__item {
+        margin: 0 5px;
+        transition: color .3s linear;
+
+        &.active {
+            color: $primary-color;
+        }
+
+        &:hover {
+            cursor: pointer;
+            color: $primary-color;
+        }
+    }
+}

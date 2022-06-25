@@ -1,0 +1,26 @@
+@use '../../../../scss/' as *;
+.heading {
+    @include flex(center, space-between);
+    color: #858585;
+    padding: 4px 0;
+    margin-bottom: 20px;
+
+    &__left {
+        font-weight: 400;
+    }
+
+    &__right {
+        &>select {
+            background-color: #f7f7f2;
+            padding: 20px;
+            outline: none;
+            border: none;
+            color: #858585;
+
+            &:active,
+            &:hover {
+                color: $black;
+            }
+        }
+    }
+}

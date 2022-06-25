@@ -2,59 +2,61 @@ import React, { useEffect, useState } from "react";
 import styles from "./shopright.module.scss";
 import className from "classnames/bind";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
 import Cart from "../../../components/cart/Cart";
+import ShopHeading from "./shopheading/ShopHeading";
+import ShopFoot from "./shopfoot/ShopFoot";
+import ModalDetail from "../../../layout/components/modal/ModalDetail";
 
 const cx = className.bind(styles);
 const API =
   "https://donpeppe-aab2a-default-rtdb.asia-southeast1.firebasedatabase.app/donpeppes.json";
 
-const ShopRight = () => {
+const ShopRight = (props) => {
   const [listCart, setListCart] = useState([]);
   const [page, setPage] = useState({
     totalCart: 0,
     currentPage: 1,
   });
+  const arange = props.arange;
   useEffect(() => {
     const getListCart = async () => {
       const response = await fetch(API);
       const data = await response.json();
       const carts = [];
       for (const key in data) {
-        const cart = {
-          id: key,
-          name: data[key].name,
-          discount: data[key].discount,
-          img: data[key].img,
-          price: data[key].price,
-          type: data[key].type,
-        };
-        carts.push(cart);
+        if (data[key].catogery.includes(arange.category)) {
+          const cart = {
+            id: key,
+            name: data[key].name,
+            discount: data[key].discount,
+            img: data[key].img,
+            price: data[key].price,
+            type: data[key].type,
+            category: data[key].catogery,
+          };
+          carts.push(cart);
+        }
       }
       setListCart(carts);
       setPage({
-        totalCart: listCart.length,
-        totalPage: (listCart.length / 12).toFixed(),
+        totalCart: carts.length,
+        totalPage: (carts.length / 12).toFixed(),
         cartOnPage: 12,
         currentPage: 1,
       });
     };
     getListCart();
-  }, []);
-  console.log(page);
+  }, [props.arange]);
+
   const Carts = listCart.map((cart, id) => {
+    console.log(cart);
     let start = (page.currentPage - 1) * page.cartOnPage + 1;
     let end =
       page.totalPage == page.currentPage
         ? page.totalCart
         : page.currentPage * page.cartOnPage;
-    console.log(start);
-    console.log(end);
-    if (start <= id && id <= end)
+    let index = id + 1;
+    if (start <= index && index <= end) {
       return (
         <Cart
           key={cart.id}
@@ -66,78 +68,42 @@ const ShopRight = () => {
           discount={cart.discount}
         />
       );
+    }
   });
 
   const changePage = (id) => {
-    console.log(page);
     setPage((props) => ({ ...props, currentPage: id }));
   };
-  const prePage = () => {};
+  const prePage = () => {
+    let currentPage = page.currentPage - 1;
+    if (currentPage > 0) {
+      setPage((props) => ({ ...props, currentPage: currentPage }));
+    }
+  };
 
-  const nextPage = () => {};
+  const nextPage = () => {
+    let currentPage = page.currentPage + 1;
+    if (currentPage > page.currentPage) {
+      setPage((props) => ({ ...props, currentPage: currentPage }));
+    }
+  };
   return (
     <div className={cx("container")}>
-      <div className={cx("heading")}>
-        <div className={cx("heading__left")}>
-          Showing {(page.currentPage - 1) * page.cartOnPage + 1} –
-          {page.totalPage == page.currentPage
-            ? page.totalCart
-            : page.currentPage * page.cartOnPage}{" "}
-          of {page.totalCart} results
-        </div>
-        <div className={cx("heading__right")}>
-          <select id="orderby">
-            <option value="default">Default sorting</option>
-            <option value="popularity">Sort by popularity</option>
-            <option value="average">Sort by average rating</option>
-            <option value="latest">Sort by latest</option>
-            <option value="latest">Sort by price: low to high</option>
-            <option value="latest">Sort by price: high to low</option>
-          </select>
-        </div>
+      <div>
+        <ShopHeading page={page} />
       </div>
       <div className={cx("list__cart")}>
         <div className={cx("list__cart__container")}>{Carts}</div>
       </div>
-      <div className={cx("footer")}>
-        <div className={cx("footer__list")}>
-          <div className={cx("footer__inner")}>
-            {page.currentPage != 1 && (
-              <FontAwesomeIcon
-                icon={faChevronLeft}
-                className={cx("footer__item")}
-                onClick={prePage}
-              />
-            )}
-            <div
-              className={cx("footer__item", { active: page.currentPage == 1 })}
-              onClick={() => changePage(1)}
-            >
-              1
-            </div>
-            <div
-              className={cx("footer__item", { active: page.currentPage == 2 })}
-              onClick={() => changePage(2)}
-            >
-              2
-            </div>
-            <div
-              className={cx("footer__item", { active: page.currentPage == 3 })}
-              onClick={() => changePage(3)}
-            >
-              3
-            </div>
-
-            {page.currentPage != page.totalPage && (
-              <FontAwesomeIcon
-                icon={faChevronRight}
-                className={cx("footer__item")}
-                onClick={nextPage}
-              />
-            )}
-          </div>
-        </div>
+      <div>
+        <ShopFoot
+          page={page}
+          changePage={(id) => changePage(id)}
+          prePage={prePage}
+          nextPage={nextPage}
+        />
       </div>
+      <ModalDetail />
     </div>
   );
 };
