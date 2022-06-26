@@ -6,7 +6,10 @@
     background-repeat: no-repeat;
     background-position: center 0;
     background-size: cover;
-
+    margin-top: $header-height;
+    @include tablet{
+        margin-top: $header-height-tablet;
+    }
     &__title {
         position: relative;
 
@@ -66,6 +69,10 @@
                     animation: none;
                 }
             }
+            @include tablet{
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
         &__item{
             z-index: 11;
@@ -87,7 +94,9 @@
                 font-weight: 400;
                 letter-spacing: 0.1rem;
                 transition: color 0.3s linear;
- 
+                @include tablet {
+                    font-size: .9rem;
+                }
             }
             &.loading{
                 disabled: true;
@@ -97,6 +106,10 @@
             }
             &:hover img{
                 animation: shaking 0.15s linear;
+            }
+
+            @include tablet{
+                margin:20px;
             }
         }
 

@@ -1,45 +1,66 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./header.module.scss";
 import classNames from "classnames/bind";
-import "./header.scss";
-import { IconSearch } from "../../../icon/Icon";
+
+import { IconMenuTablet, IconSearch } from "../../../icon/Icon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 import Button from "../../../components/button/Button";
 import Cart from "./cart/Cart";
+import Search from "./search/Search";
 
 const cx = classNames.bind(styles);
 
 const Header = () => {
+  const [isMenuTablet, setIsMenuTablet] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
-  const headerRef = useRef();
+  const [isShrink, setIsShrink] = useState(false);
+  const [isHide, setIsHide] = useState(false);
   const closeTabSearch = () => {
     setIsSearch(false);
   };
 
-  // useEffect(() => {
-  //   const shrinkHeader = () => {
-  //     if (
-  //       document.body.scrollTop > 100 ||
-  //       document.documentElement.scrollTop > 100
-  //     ) {
-  //       headerRef.current.classList.add("shrink");
-  //       // headerRef.current.classList.add("shrink");
-  //     } else {
-  //       headerRef.current.classList.remove("shrink");
-  //     }
-  //   };
+  const closeMenuTabletHandler = () => {
+    setIsMenuTablet(false);
+  };
 
-  //   window.addEventListener("scroll", shrinkHeader);
-  //   return () => {
-  //     window.removeEventListener("scroll", shrinkHeader);
-  //   };
-  // }, []);
+  useEffect(() => {
+    const shrinkHeader = () => {
+      if (document.documentElement.scrollTop < 400) {
+        setIsShrink(true);
+        setIsHide(false);
+      } else {
+        if (document.documentElement.scrollTop < 600) {
+          setIsShrink(false);
+          setIsHide(true);
+        } else {
+          setIsShrink(true);
+          setIsHide(false);
+        }
+      }
+    };
 
+    window.addEventListener("scroll", shrinkHeader);
+    return () => {
+      window.removeEventListener("scroll", shrinkHeader);
+    };
+  }, []);
+
+  const clickSearchHandler = () => {
+    setIsSearch(true);
+    setIsMenuTablet(false);
+  };
   return (
-    <div ref={headerRef} className={cx("header", { open: !isSearch })}>
+    <div
+      className={cx(
+        "header",
+        { open: !isSearch },
+        { shrink: isShrink },
+        { hide: isHide }
+      )}
+    >
       <div className={cx("container")}>
         <Link to="/" className={cx("logo")}>
           <img
@@ -71,29 +92,64 @@ const Header = () => {
             </Button>
           </div>
         </div>
-      </div>
 
-      {isSearch && (
-        <div className={cx("search__tab")}>
-          <div className={cx("search__tab__inner")}>
-            <div className={cx("search__tab__icon", "search__icon")}>
-              <IconSearch />
-            </div>
-            <div className={cx("search__tab__input")}>
-              <input type="text" placeholder="Search..." />
-            </div>
-            <div
-              className={cx("search__tab__close_1")}
-              onClick={closeTabSearch}
-            >
-              <FontAwesomeIcon
-                className={cx("search__tab__close")}
-                icon={faCircleXmark}
-              />
-            </div>
+        <div className={cx("menu-tablet")}>
+          <div className={cx("menu-table__cart")}>
+            <Cart />
+          </div>
+          <div
+            className={cx("menu-tablet__menusub__icon")}
+            onClick={() => setIsMenuTablet(true)}
+          >
+            <IconMenuTablet />
           </div>
         </div>
-      )}
+      </div>
+
+      {isSearch && <Search closeTabSearch={closeTabSearch} />}
+
+      <div className={cx("menu-tablet__container", { active: isMenuTablet })}>
+        <div className={cx("menu-tablet__inner", { active: isMenuTablet })}>
+          <div
+            className={cx("menu-tablet__close")}
+            onClick={() => setIsMenuTablet(false)}
+          >
+            <span>&times;</span>
+          </div>
+          <ul className={cx("menu-tablet__list")}>
+            <li
+              className={cx("menu-tablet__item")}
+              onClick={closeMenuTabletHandler}
+            >
+              <Link to="/" className={cx("menu-tablet__link")}>
+                Home
+              </Link>
+            </li>
+            <li
+              className={cx("menu-tablet__item")}
+              onClick={closeMenuTabletHandler}
+            >
+              <Link to="/product" className={cx("menu-tablet__link")}>
+                Menu Filter
+              </Link>
+            </li>
+            <li
+              className={cx("menu-tablet__item")}
+              onClick={clickSearchHandler}
+            >
+              Search
+            </li>
+            <li
+              className={cx("menu-tablet__item")}
+              onClick={closeMenuTabletHandler}
+            >
+              <Link to="/shop" className={cx("menu-tablet__link")}>
+                Order Online
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };

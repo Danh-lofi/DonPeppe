@@ -16,9 +16,11 @@ const Product = () => {
     setIsLoading(id);
   };
   const changeCategory = (id) => {
-    if (!isLoading) {
-      setIsLoading(true);
-      setCategory(id);
+    if (id !== category) {
+      if (!isLoading) {
+        setIsLoading(true);
+        setCategory(id);
+      }
     }
   };
   return (

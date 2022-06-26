@@ -1,12 +1,11 @@
 @use '../../../scss/' as *;
 .modal{
-
     width: 100vw;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 11;
+    z-index: 101;
     &.open{
         visibility: visible;
         @include opacity(fadeIn, 0, 1);
@@ -20,7 +19,9 @@
         @include opacity(fadeOut, 1, 0);
         animation: fadeOut 0.3s ease-in;
         transition: visibility 0.3s ease-in;     
+
     }
+
 }
 
 .backdrop{
@@ -41,6 +42,15 @@
     animation: fadeIn 0.1s ease-in;
     transform: translateY(100%);
     transition: transform 0.2s linear;
+
+    @include tablet {
+        top: 5%;
+        left: 5%;
+        width: 90%;
+        height: 50%;
+        overflow: auto;
+        background-color: #fff;
+    }
 }
 .inner{
     display:flex;
@@ -48,6 +58,10 @@
     width: 100%;
     height: 100%;
     padding: 25px;
+    @include tablet {
+        flex-direction: column;
+        padding:0;
+    }
 }
 
 .close{
@@ -60,6 +74,10 @@
     border: 50px solid transparent;
     border-top-color: orange;
     border-right-color: orange; 
+    @include tablet {
+        right: 0%;
+        top: -0.7%;
+    }    
     &::after {
             content: "";
             height: 60px;
@@ -82,6 +100,8 @@
         transform: translate(100%, -120%);
        
     }
+
+    
 }
 
 .img{
@@ -90,11 +110,16 @@
         max-width: 100%;
         height: 100%;
     }
+    @include tablet{
+        padding: 20px;
+    }
 }
 .info{
     flex: 1;
     padding: 0 30px;
-
+    @include tablet {
+        padding-bottom: 50px;
+    }
     & > .name{
         font-weight: 500;
         font-size: 2.5rem;
@@ -128,7 +153,9 @@
 
     &  .nutritional{
         padding: 10px 0;
-
+        @include tablet{
+            padding: 20px 0 40px;
+        }
         &__item{
             display: flex;
             &__name{

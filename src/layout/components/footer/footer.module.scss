@@ -15,6 +15,10 @@
         &__item{
             flex: 1;
         }
+
+        @include tablet{
+            font-size: 1.2rem;
+        }
     }
 
     &__contact{
@@ -104,6 +108,9 @@
 }
 .right {
     flex: 1;
+    @include tablet{
+        display: none;
+    };
 }
 
 .mr-15{

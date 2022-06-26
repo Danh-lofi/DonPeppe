@@ -1,7 +1,10 @@
+@use '../../scss/' as *;
 .menu {
      width: 100%;
      display: grid;
      grid-template-columns: auto auto auto auto;
      gap: 20px;
-    //  opacity: 0;
+      @include tablet {
+      grid-template-columns: auto auto auto;
+      }
  }
