@@ -12,6 +12,7 @@ const API =
   "https://donpeppe-aab2a-default-rtdb.asia-southeast1.firebasedatabase.app/donpeppes.json";
 
 const ShopRight = (props) => {
+  console.log(props);
   const [listCart, setListCart] = useState([]);
   const [isCart, setIsCart] = useState(true);
   const [page, setPage] = useState({
@@ -38,9 +39,12 @@ const ShopRight = (props) => {
           if (
             cart.price / 1 >= arange.priceFrom / 1 &&
             cart.price / 1 <= arange.priceTo / 1
-          )
+          ) {
+            console.log(cart);
             carts.push(cart);
+          }
           if (carts.length === 0) setIsCart(false);
+          else setIsCart(true);
         }
       }
 
