@@ -11,7 +11,10 @@ const ShopLeft = (props) => {
     <div className={cx("container")}>
       <div className={cx("category")}>
         <h3 className={cx("title")}>PRODUCT CATEGORIES</h3>
-        <ListCategory changeCategory={props.changeCategory} />
+        <ListCategory
+          changeCategory={props.changeCategory}
+          arange={props.arange}
+        />
       </div>
       <div className={cx("filter")}>
         <h3 className={cx("title")}>FILTER BY PRICE</h3>

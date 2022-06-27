@@ -25,7 +25,6 @@ const Shop = () => {
     setArange((arange) => ({ ...arange, priceFrom, priceTo }));
   };
 
-  console.log(arange);
   return (
     <div className={cx("shop")}>
       <TitlePage>SHOP</TitlePage>
@@ -33,6 +32,7 @@ const Shop = () => {
         <div className={cx("shop__inner")}>
           <div className={cx("shop__left")}>
             <ShopLeft
+              arange={arange}
               changeCategory={(category) => changeCategoryHandler(category)}
               changeFitlerPrice={(priceFrom, priceTo) =>
                 changeFitlerPriceHandler(priceFrom, priceTo)

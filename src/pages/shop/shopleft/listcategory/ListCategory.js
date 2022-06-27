@@ -24,6 +24,7 @@ const ListCategory = (props) => {
 
   const List = listCategory.map((item, index) => (
     <ItemCategory
+      arange={props.arange}
       category={item}
       key={item}
       id={listKey[index]}
