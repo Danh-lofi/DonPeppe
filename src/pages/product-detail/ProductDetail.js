@@ -9,7 +9,7 @@ import TitlePage from "../../components/title-page/TitlePage";
 import Button from "../../components/button/Button";
 import Cart from "../../components/cart/Cart";
 import InfoProduct from "./info-product/InfoProduct";
-
+import ModalDetail from "../../layout/components/modal/ModalDetail";
 const cx = classNames.bind(styles);
 const ProductDetail = () => {
   const [active, setActive] = useState({
@@ -103,7 +103,7 @@ const ProductDetail = () => {
     }
   };
   return (
-    <div>
+    <div className={cx("product-detail")}>
       <TitlePage>SHOP</TitlePage>
       <div className={cx("container")}>
         <div className={cx("inner")}>
@@ -319,6 +319,7 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+      <ModalDetail />
     </div>
   );
 };

@@ -13,5 +13,9 @@
     font-weight: 600;
     // padding-left:10%;
     margin: 0 auto;
+    @include tablet {
+            max-width: $width-tablet;
+            margin: 0 auto;
+        }
 }
 

@@ -18,11 +18,13 @@
 
         @include tablet {
             height: $header-height-tablet;
+            
         }
     }
 
     @include tablet{
         height: $header-height-tablet;
+        z-index: 100;
     }
 }
 
@@ -32,6 +34,11 @@
     @include flex(center,space-between);
     padding: 0 $header-padding;
 
+    @include tablet{
+        padding: 0;
+        margin: 0 auto;
+        max-width: $width-tablet;
+    }
    
 }
 .logo{

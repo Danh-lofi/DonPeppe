@@ -114,6 +114,7 @@ const ModalDetail = () => {
                 </Button>
               </div>
             </div>
+            <div className={cx("padding")}></div>
           </div>
         </div>
       </div>

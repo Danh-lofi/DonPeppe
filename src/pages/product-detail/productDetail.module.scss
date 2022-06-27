@@ -1,14 +1,23 @@
 @use '../../scss/' as *;
 
+.product-detail{
+    margin-top: $header-height;
+    @include tablet {
+        margin-top: $header-height-tablet;
+    }
+}
 .container{
     background-color: #fff;
-
 }
 
 .inner{
-    width: 1100px;
+    width: 1300px;
     margin: 0 auto;
     padding: 139px 0 100px;
+    @include tablet{
+        width: 768px;
+        margin: 0 auto;
+    }
 }
 
 .tabs{
@@ -131,6 +140,7 @@ table.content{
 .related{
     padding: 139px 0 100px;
     cursor: pointer;
+
     &__title{
         color: $secondary-color;
         font-weight: 500;
@@ -143,6 +153,12 @@ table.content{
         display: flex;
         width: 1300px;
         padding-right: 100px;
+        @include tablet{
+            display: grid;
+            grid-template-columns: auto auto;
+            padding-right: 0;
+            width: 100%;
+        }
     }
 
     &__product{

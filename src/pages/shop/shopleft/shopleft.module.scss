@@ -2,6 +2,9 @@
 
 .container{
     margin-right: 50px;
+    @include tablet{
+        margin-right: 0px;
+    }
 }
 .category{
     margin: 20px 0;

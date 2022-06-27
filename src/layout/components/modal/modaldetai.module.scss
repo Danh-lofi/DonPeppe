@@ -47,7 +47,7 @@
         top: 5%;
         left: 5%;
         width: 90%;
-        height: 50%;
+        height: 45%;
         overflow: auto;
         background-color: #fff;
     }
@@ -59,8 +59,7 @@
     height: 100%;
     padding: 25px;
     @include tablet {
-        flex-direction: column;
-        padding:0;
+        padding: 20px 0;
     }
 }
 
@@ -118,6 +117,7 @@
     flex: 1;
     padding: 0 30px;
     @include tablet {
+        padding: 0 0 0 0;
         padding-bottom: 50px;
     }
     & > .name{
@@ -162,6 +162,9 @@
                 opacity: 0.6;
                 font-weight: 300;
                 font-size: 1.6rem;
+                @include tablet{
+                    font-size: 1.2rem;
+                }
             }
             &__donut{
                 text-align: center;
@@ -231,3 +234,9 @@ input[type=number] {
 }
 
 
+
+.padding{
+    @include tablet{
+        padding: 20px 0;
+    }
+}

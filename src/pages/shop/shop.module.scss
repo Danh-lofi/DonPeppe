@@ -7,10 +7,16 @@
         padding: 139px 0 100px ;
         max-width: 1300px;
         margin: 0 auto;
+        @include tablet {
+            max-width: 768px;
+        }
     }
 
     &__inner {
         display: flex;
+        @include tablet {
+            flex-direction: column;
+        }
     }
     
     &__left{
