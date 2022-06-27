@@ -17,6 +17,10 @@
             grid-template-columns: auto auto;
             gap: 0px;
         }
+        @include tablet {
+            grid-template-columns: auto;
+            gap: 0px;
+        }
     }
 }
 

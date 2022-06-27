@@ -5,7 +5,11 @@
      grid-template-columns: auto auto auto auto;
      gap: 20px;
       @include tablet {
-      grid-template-columns: auto auto auto;
+      grid-template-columns: auto auto;
           gap: 0px;
       }
+    @include mobile {
+        grid-template-columns: auto;
+        gap: 0px;
+    }
  }

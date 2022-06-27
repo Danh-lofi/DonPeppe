@@ -32,6 +32,9 @@
             & img{
                 height: 86px;
                 width: 86px;
+                @include mobile{
+                    display: none;
+                }
             }
             &__name{
                 padding-left: 20px;

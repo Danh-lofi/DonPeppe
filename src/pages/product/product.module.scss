@@ -12,7 +12,9 @@
     }
     &__title {
         position: relative;
-
+        @include mobile{
+            padding: 50px 0;
+        }
         &__container {
             position: absolute;
             left: 50%;
@@ -34,6 +36,9 @@
             color: $white;
             font-weight: 500;
             font-size: 4rem;
+            @include mobile{
+                line-height: 5rem;
+            }
         }
     }
 

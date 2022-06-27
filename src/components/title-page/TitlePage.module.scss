@@ -17,5 +17,9 @@
             max-width: $width-tablet;
             margin: 0 auto;
         }
+    @include mobile {
+        max-width: $width-mobile;
+        margin: 0 auto;
+    }
 }
 

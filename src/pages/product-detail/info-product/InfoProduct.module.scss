@@ -3,7 +3,9 @@
 .product {
     display: flex;
     padding-bottom: 50px;
-
+    @include mobile{
+        flex-direction: column;
+    }
     & .img {
         flex: 1;
     }
@@ -14,6 +16,9 @@
 
         &__inner {
             max-width: 400px;
+        }
+        @include mobile{
+            padding-left: 0;
         }
 
     }
@@ -42,7 +47,7 @@
 
 .nutritional {
     margin-bottom: 10px;
-
+   
     &__title {
         margin: 20px 0;
         color: $secondary-color;
@@ -50,11 +55,16 @@
 
     &__item {
         display: flex;
-
+        @include mobile {
+            font-size: 1.4rem;
+        }
         &__name {
             opacity: 0.6;
             font-weight: 300;
             font-size: 1.6rem;
+            @include mobile {
+            font-size: 1.4rem;
+            }
         }
 
         &__donut {

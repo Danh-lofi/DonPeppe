@@ -10,11 +10,17 @@
         @include tablet {
             max-width: 768px;
         }
+        @include mobile {
+            max-width: $width-mobile;
+        }
     }
 
     &__inner {
         display: flex;
         @include tablet {
+            flex-direction: column;
+        }
+        @include mobile {
             flex-direction: column;
         }
     }

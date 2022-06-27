@@ -18,6 +18,10 @@
         width: 768px;
         margin: 0 auto;
     }
+    @include mobile{
+        width: $width-mobile;
+        margin: 0 auto;
+    }
 }
 
 .tabs{
@@ -29,13 +33,19 @@
         padding-bottom:10px;
         border-bottom: 2px dotted $secondary-color;
         margin-bottom: 20px;
+        @include mobile{
+            flex-direction: column;
+        }
     }
     &__item{
         position: relative;
         margin-right: 80px;
         color: $secondary-color;
         font-weight: 500;
-        cursor: pointer;    
+        cursor: pointer;  
+        @include mobile {
+            padding: 10px 0;
+        }
         &::after{
             content: "";
             // display: none;
@@ -47,6 +57,9 @@
             height: 2px;
             background-color: $primary-color;
             transition: opacity 0.4s linear;
+            @include mobile{
+                bottom: 0px;
+            }
         }
         &.active::after,&:hover::after{
             opacity: 1;
@@ -158,6 +171,9 @@ table.content{
             grid-template-columns: auto auto;
             padding-right: 0;
             width: 100%;
+        }
+        @include mobile{
+            grid-template-columns: auto;
         }
     }
 

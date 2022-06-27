@@ -1,5 +1,11 @@
 @use '../../scss/' as *;
 .cart{
+    margin-top: $header-height;
+
+    @include tablet{
+        margin-top: $header-height-tablet;
+    }
+
     &__container{
         background-color: $white;
         height: 100%;
@@ -11,6 +17,12 @@
     &__inner{
         width: 1300px;
         padding: 0 30px;
+        @include tablet{
+            max-width: width-tablet;
+        }
+        @include mobile{
+            max-width: width-mobile;
+        }
     }
 
     &__none{
